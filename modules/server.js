@@ -1,6 +1,17 @@
-const user = require('./user');
+const User = require('user');
+const db = require('db');
 
-let vasya = new user.User("Vasya");
-let petya = new user.User("Petya");
+function run() {
+    let vasya = new User("Vasya");
+    let petya = new User("Petya");
 
-vasya.hello(petya);
+    vasya.hello(petya);
+
+    console.log(db.getPhrase("Run succesfull"));
+}
+
+if (module.parent) {
+    exports.run = run;
+} else {
+    run();
+}

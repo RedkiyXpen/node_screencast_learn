@@ -1,13 +1,14 @@
-let phrases = require('./ru.json')
+const db = require('db');
+const log = require('logger')(module);
+
+db.connect();
 
 function User(name) {
     this.name = name;
 }
 
 User.prototype.hello = function(who) {
-    console.log(`${phrases.Hello} ${who.name}`);
+    log(`${db.getPhrase("Hello")}, ${who.name}`);
 }
 
-console.log('User.js is required');
-
-exports.User = User;
+module.exports = User;
